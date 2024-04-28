@@ -1,0 +1,103 @@
+font pango:DejaVu Sans Mono Bold Semi-Condensed 11.000000
+floating_modifier Mod4
+default_border normal 2
+default_floating_border normal 2
+hide_edge_borders none
+focus_wrapping yes
+focus_follows_mouse yes
+focus_on_window_activation smart
+mouse_warping output
+workspace_layout default
+workspace_auto_back_and_forth no
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.unfocused #333333 #222222 #888888 #292d2e #222222
+client.urgent #2f343a #900000 #ffffff #900000 #900000
+client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.background #ffffff
+
+bindsym Mod4+0 workspace number 10
+bindsym Mod4+1 workspace number 1
+bindsym Mod4+2 workspace number 2
+bindsym Mod4+3 workspace number 3
+bindsym Mod4+4 workspace number 4
+bindsym Mod4+5 workspace number 5
+bindsym Mod4+6 workspace number 6
+bindsym Mod4+7 workspace number 7
+bindsym Mod4+8 workspace number 8
+bindsym Mod4+9 workspace number 9
+bindsym Mod4+Control+Shift+Down move workspace to output down
+bindsym Mod4+Control+Shift+Left move workspace to output left
+bindsym Mod4+Control+Shift+Right move workspace to output right
+bindsym Mod4+Control+Shift+Up move workspace to output up
+bindsym Mod4+Down focus down
+bindsym Mod4+Left focus left
+bindsym Mod4+Return exec /nix/store/d2k6pliglmll6y53v72rdfnqv66ah2k4-alacritty-0.12.3/bin/alacritty
+bindsym Mod4+Right focus right
+bindsym Mod4+Shift+0 move container to workspace number 10
+bindsym Mod4+Shift+1 move container to workspace number 1
+bindsym Mod4+Shift+2 move container to workspace number 2
+bindsym Mod4+Shift+3 move container to workspace number 3
+bindsym Mod4+Shift+4 move container to workspace number 4
+bindsym Mod4+Shift+5 move container to workspace number 5
+bindsym Mod4+Shift+6 move container to workspace number 6
+bindsym Mod4+Shift+7 move container to workspace number 7
+bindsym Mod4+Shift+8 move container to workspace number 8
+bindsym Mod4+Shift+9 move container to workspace number 9
+bindsym Mod4+Shift+BackSpace exec "pkill -u $USER"
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Right move right
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+c reload
+bindsym Mod4+Shift+e exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'
+bindsym Mod4+Shift+minus move scratchpad
+bindsym Mod4+Shift+q kill
+bindsym Mod4+Shift+r restart
+bindsym Mod4+Shift+space floating toggle
+bindsym Mod4+Up focus up
+bindsym Mod4+a focus parent
+bindsym Mod4+d exec "/nix/store/15r07g4hmdk4jhfdvcs58azz76zlp3zl-rofi-1.7.5/bin/rofi -modi drun,run -show drun"
+bindsym Mod4+e layout toggle split
+bindsym Mod4+f fullscreen toggle
+bindsym Mod4+h split h
+bindsym Mod4+l exec /nix/store/f2difl7w78hhqhm38zs41pipbf60v09w-betterlockscreen-4.2.0/bin/betterlockscreen --lock
+bindsym Mod4+minus scratchpad show
+bindsym Mod4+q kill
+bindsym Mod4+r mode resize
+bindsym Mod4+s layout stacking
+bindsym Mod4+space focus mode_toggle
+bindsym Mod4+v split v
+bindsym Mod4+w layout tabbed
+bindsym Print exec /nix/store/amlbbr9xnfrmwvclvza51mk4yxlgwp6h-flameshot-12.1.0/bin/flameshot gui
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+
+mode "resize" {
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Escape mode default
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Return mode default
+  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+}
+
+bar {
+  font pango:FiraSans, Pango Bold Semi-Condensed 14.000000
+  position top
+  status_command /nix/store/3dgz9i53ji5wa1lxhdhw3sl42dh9ma55-i3status-rust-0.32.2/bin/i3status-rs ~/.config/i3status-rust/config-default.toml
+  i3bar_command /nix/store/blnh189mvyyq0lifyf41qm33ph13jx4r-i3-4.23/bin/i3bar
+  tray_output primary
+}
+
+gaps inner 10
+gaps outer 5
+exec_always  /nix/store/w0j9f6qnrbg4vlynn1vn0jj645a6avbw-feh-3.10.1/bin/feh --bg-scale /nix/store/3pmckkv6rvzpr2bfd0b4v2rj5z96a6k5-wallpaper.jpg
+exec_always  exec /nix/store/xg9a8mw431h0ylfvs7l6nlk3b0amvxxl-picom-10.2/bin/picom
+exec_always  /nix/store/m31gvd8xqz50v500qq5abrx3xjf9j7ky-setxkbmap-1.3.4/bin/setxkbmap -option "caps:swapescape"
+for_window [class="^.*"] border pixel 2
